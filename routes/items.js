@@ -31,8 +31,6 @@ router.put('/:id', (req, res, next) => {
 router.delete('/:id', (req, res, next) => {
   // TODO: complete this route
 
-  console.log(' routes: req.params');
-  console.log(req.params);
   itemDao.deleteById(req.params);
   res.sendStatus(200);
   // res.sendStatus(501);
