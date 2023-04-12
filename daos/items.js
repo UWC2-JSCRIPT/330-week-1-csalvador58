@@ -16,10 +16,19 @@ module.exports.getById = (itemId) => {
 
 module.exports.deleteById = async (itemId) => {
   // TODO: complete
+  const index = itemsModel.items.findIndex((item) => item.id === itemId.id);
+  const deletedItem = itemsModel.items.splice(index, 1);
+  return deletedItem;
 };
 
 module.exports.updateById = async (itemId, newObj) => {
   // TODO: complete
+  const index = itemsModel.items.findIndex((item) => item.id === itemId.id);
+  if (index < 0) {
+    return itemId;
+  }
+  itemsModel.items[index] = { ...newObj, ...itemId };
+  return itemsModel.items[index];
 };
 
 module.exports.create = async (item) => {
